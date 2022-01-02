@@ -94,6 +94,15 @@ def home():
     # import the opencv library
 
 
+#Camera page
+@app.route("/cam")
+@is_logged_in
+def cam():
+    
+	return render_template('cam.html')
+    # import the opencv library
+
+
 # define a video capture object
 
     

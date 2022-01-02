@@ -4,7 +4,15 @@
 
 {% extends 'layout.html' %}
 {% block body %}
-<h3 class='jumbotron'>Welcome : {{session.username}} <br /> Your email :{{session.email}}</h3>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8  offset-lg-2">
+      <h3 class="mt-5">Camera 1: Webcam</h3>
+      <img src="{{ url_for('video_feed') }}" width="100%">
+    </div>
+  </div>
+</div>
 
 
 {% endblock %}
