@@ -10,7 +10,7 @@ app=Flask(__name__)
 app.config['MYSQL_HOST']='localhost'
 app.config['MYSQL_USER']='root'
 app.config['MYSQL_PASSWORD']='2525'
-app.config['MYSQL_DB']='db_sample'
+app.config['MYSQL_DB']='wd_cctv'
 app.config['MYSQL_CURSORCLASS']='DictCursor'
 mysql=MySQL(app)
  
@@ -20,15 +20,17 @@ mysql=MySQL(app)
 def login():
     status=True
     if request.method=='POST':
-        email=request.form["email"]
-        pwd=request.form["upass"]
+        u_name=request.form["u_name"]
+        u_password=request.form["u_password"]
         cur=mysql.connection.cursor()
-        cur.execute("select * from users where EMAIL=%s and UPASS=%s",(email,pwd))
+        cur.execute("select * from user where u_name=%s and u_password=%s",(u_name,u_password))
         data=cur.fetchone()
         if data:
             session['logged_in']=True
-            session['username']=data["UNAME"]
-            session['email']=data["EMAIL"]
+            
+            session['username']=data["u_name"]
+            session['email']=data["u_email"]
+            session['phone']=data["u_phone"]
 
             flash('Login Successfully','success')
             return redirect('home')
@@ -62,10 +64,10 @@ def reg():
         flash('Registration Successfully. Login Here...','success')
         return redirect('login')
     return render_template("reg.html",status=status)
-    
+
+#Camera
 camera = cv2.VideoCapture(0)  # use 0 for web camera
 # for local webcam use cv2.VideoCapture(0)
-
 def gen_frames():  # generate frame by frame from camera
     while True:
         # Capture frame-by-frame
@@ -77,8 +79,6 @@ def gen_frames():  # generate frame by frame from camera
             frame = buffer.tobytes()
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')  # concat frame one by one and show result
-
-
 @app.route('/video_feed')
 def video_feed():
     #Video streaming route. Put this in the src attribute of an img tag
@@ -89,7 +89,6 @@ def video_feed():
 @app.route("/home")
 @is_logged_in
 def home():
-    
 	return render_template('home.html')
     # import the opencv library
 
