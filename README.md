@@ -1,3 +1,6 @@
-# GP-_-431.432-_-2021.2022
+# WD-CCTV
 Graduation Project: An Intelligent Weapons Detection System for Surveillance Cameras
-FCIS, IU, Madinah, Saudi Arabia
+for FCIS, IU, Madinah, KSA
+-------Team Member--------
+1.Mohamed Nasser Hashem
+2.Mustafa Ahmed Abdulsami
