@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% block body %}
+<br>
+<h1 class='text-center'>Viewing Camera</h1>
+<br><hr><br>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-8">
+      <img src="{{ url_for('video_feed') }}" width="97.5%">
+    </div>
+    <div class="col-6 col-md-4 jumbotron">
+      <h2 class='text-center'>Camera</h2>
+      <br><br>
+      <br><br>
+      <br><br>
+      <h3>Name: Webcam</h3>
+      <br><br>
+      <h3>Location: Labtop</h3>
+      <br><br>
+      <br>
+
+    </div>
+
+  </div>
+</div>
+
+
+{% endblock %}

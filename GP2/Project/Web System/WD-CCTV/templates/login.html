@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class='row mt-5'>
+  <div class='col-4 mx-auto'>
+    <h4 class='text-center'>Login</h4>
+    <hr>
+    <form action="{{url_for('login')}}" method='post'>
+      <div class='form-group'>
+        <label>Username</label>
+        <input type='text' name='u_name' required class='form-control'>
+      </div>
+      <br>
+      <div class='form-group'>
+        <label>Password</label>
+        <input type='password' name='u_password' required class='form-control'>
+      </div>
+      <br>
+      <input type='submit' name='Login' value='Submit' class='btn btn-success'>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{% block body %}
+<br>
+<h1 class='text-center'>Our Users</h1>
+<br>
+<hr>
+
+<div class="container mt-5">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Phone</th>
+				<th>Shift</th>
+				<th>Update</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+
+		<tbody>  {% for data in user %}
+			<tr>
+				<td>{{ data.u_name }}</td>
+				<td>{{ data.u_email }}</td>
+				<td>{{ data.u_phone }}</td>
+				<td>{{ data.u_shift }}</td>
+				<td><a href="/user/edit/{{data.u_id}}" class="btn btn-info">Update</a></td>
+				<td><a href="/user/delete/{{data.u_id}}" class="btn btn-danger">Delete</a>
+					</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+{% endblock %}
